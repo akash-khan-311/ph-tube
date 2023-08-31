@@ -10,7 +10,7 @@ const loadCategories = async () => {
     const div = document.createElement("div");
     div.innerHTML = `
     
-    <a onclick="handleCategoryData('${category.category_id}')" class="tab">${category.category}</a>
+    <a  onclick="handleCategoryData('${category.category_id}')" class="tab text-xl font-semibold">${category.category}</a>
 
     
     `;
@@ -24,7 +24,58 @@ const handleCategoryData = async (id) => {
   );
   const data = await res.json();
   const category = data.data;
-  console.log(category);
+  const errorMessage = document.getElementById("error");
+  if (category.length === 0) {
+    errorMessage.classList.remove("hidden");
+  } else {
+    errorMessage.classList.add("hidden");
+  }
+  const mediaCardContainer = document.getElementById("card-container");
+  mediaCardContainer.textContent = "";
+  category.forEach((media) => {
+    console.log(media);
+    const card = document.createElement("div");
+    card.classList = "card bg-base-100  shadow-xl";
+    card.innerHTML = `
+   
+   
+             <figure><img src="${media.thumbnail}" alt="Shoes" /></figure>
+  <div class="card-body">
+    <div class="flex items-center ">
+        <div class="avatar">
+            <div class="w-14 rounded-full">
+                <img src="${media.authors[0].profile_picture}" />
+            </div>
+        </div>
+        <div class="ml-4">
+                 <div>
+                 <h3 class="text-xl font-semibold">${media.title}</h3>
+        <div class="flex items-center">
+            <p class="text-[gray] text-lg ">${media.authors[0].profile_name}
+            
+             <div class="badge ml-3 w-8 h-8  badge-primary">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            </p>
+           
+        </div>
+        <div>
+            <p class="text-[gray]">${media.others.views} views</p>
+        </div>
+    </div>
+        </div>
+    </div>
+   
+   
+  </div>
+   
+   
+   `;
+
+    mediaCardContainer.appendChild(card);
+  });
 };
+
+handleCategoryData("1000");
 
 loadCategories();
