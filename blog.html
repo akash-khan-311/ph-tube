@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <!-- Daisy UI Link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <main>
+      <section class="px-3 lg:px-0">
+        <div
+          class="container mx-auto my-10 lg:my-40 flex justify-center flex-col"
+        >
+          <div class="space-y-5 w-2/4 mx-auto">
+            <div class="collapse collapse-plus bg-base-200">
+              <input type="radio" name="my-accordion-3" checked="checked" />
+              <div class="collapse-title text-xl font-medium">
+                Discuss the scope of var, let, and const
+              </div>
+              <div class="collapse-content">
+                <p>
+                  <span class="text-lg font-semibold"
+                    >The scope of a var variable is functional scope.</span
+                  >
+                  : It can be updated and re-declared into the scope. It can be
+                  declared without initialization. It can be accessed without
+                  initialization as its default value is “undefined”.
+                </p>
+                <p>
+                  <span class="text-lg font-semibold"
+                    >The scope of a let variable is block scope.</span
+                  >
+                  : It can be updated but cannot be re-declared into the scope.
+                  It can be declared without initialization. It cannot be
+                  accessed without initialization otherwise it will give
+                  ‘referenceError’.
+                </p>
+                <p>
+                  <span class="text-lg font-semibold"
+                    >The scope of a const variable is block scope..</span
+                  >
+                  : It cannot be updated or re-declared into the scope. It
+                  cannot be declared without initialization. It cannot be
+                  accessed without initialization, as it cannot be declared
+                  without initialization.
+                </p>
+              </div>
+            </div>
+            <div class="collapse collapse-plus bg-base-200">
+              <input type="radio" name="my-accordion-3" />
+              <div class="collapse-title text-xl font-medium">
+                Tell us the use cases of null and undefined
+              </div>
+              <div class="collapse-content">
+                <p>
+                  Null in JavaScript means an empty value and is also a
+                  primitive type in JavaScript. The variable which has been
+                  assigned as null contains no value. Undefined, on the other
+                  hand, means the variable has been declared, but its value has
+                  not been assigned.
+                </p>
+              </div>
+            </div>
+            <div class="collapse collapse-plus bg-base-200">
+              <input type="radio" name="my-accordion-3" />
+              <div class="collapse-title text-xl font-medium">
+                What do you mean by REST API?
+              </div>
+              <div class="collapse-content">
+                <p>
+                  An API, or application programming interface, is a set of
+                  rules that define how applications or devices can connect to
+                  and communicate with each other. A REST API is an API that
+                  conforms to the design principles of the REST, or
+                  representational state transfer architectural style. For this
+                  reason, REST APIs are sometimes referred to RESTful APIs.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-center mt-32">
+            <p class="text-2xl">
+              Back To
+              <a class="text-red-500 font-semibold" href="index.html"
+                >PH Tube</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
