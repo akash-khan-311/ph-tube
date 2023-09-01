@@ -70,15 +70,33 @@ const displayAllData = (category) => {
 
   category.forEach((media) => {
     console.log(media);
+    const totalSeconds = media.others?.posted_date;
 
+    const remainingMinutes = totalSeconds % 60;
+    const totalMinutes = (totalSeconds - remainingMinutes) / 60;
+
+    const remainingHours = totalMinutes % 60;
+    const totalHours = (totalMinutes - remainingHours) / 60;
+    let time;
+    if (totalSeconds.length === 0) {
+      time;
+    } else {
+      time = `${totalHours} hours ${remainingHours} miniutes ago`;
+    }
     const card = document.createElement("div");
     card.classList = "card card-bg  shadow-xl";
     card.innerHTML = `
    
    
-             <figure class="h-40 "><img class="w-full" src="${
+             <figure class="h-40 relative"><img class="w-full " src="${
                media.thumbnail
-             }" alt="Shoes" /></figure>
+             }" alt="Shoes" />
+              <div class="badge ${
+                time == undefined ? "bg-transparent border-none" : "bg-black"
+              }  text-white badge-ghost z-20 absolute right-10 bottom-4">${
+      time ? time : ""
+    }</div>
+             </figure>
   <div class="card-body">
     <div class="flex items-center ">
         <div class="avatar">
@@ -94,7 +112,7 @@ const displayAllData = (category) => {
             
             <div class="ml-3 w-6">
                 ${
-                  media.authors[0].verified
+                  media.authors[0].verified 
                     ? '<img id="verify" src="../images/verifyed-icon.png" alt="Verified" />'
                     : ""
                 }
