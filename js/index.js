@@ -34,8 +34,8 @@ document.getElementById("sort-btn").addEventListener("click", () => {
   // Get the sort result from main data
   newData.sort(
     (a, b) =>
-      parseViewStringToNumber(a.others.views) -
-      parseViewStringToNumber(b.others.views)
+      parseViewStringToNumber(b.others.views) -
+      parseViewStringToNumber(a.others.views)
   );
   // Pass Sorted data to displayAllData
   displayAllData(newData);
@@ -78,7 +78,7 @@ const displayAllData = (category) => {
     // convert to hours
     const remainingHours = totalMinutes % 60;
     const totalHours = (totalMinutes - remainingHours) / 60;
-    // check if else and set seconds , minitues and hourse to time 
+    // check if else and set seconds , minitues and hourse to time
     let time;
     if (totalSeconds.length === 0) {
       time;
