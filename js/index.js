@@ -1,5 +1,5 @@
 // Load Categories From API
-const loadCategories = async () => {
+const loadCategories = async (isLoading) => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/videos/categories"
   );
@@ -52,7 +52,7 @@ const handleCategoryData = async (id) => {
   newData.length = 0;
   // Push New Data and Copy api data and then push new data
   newData.push(...category);
-  //All data provide by perameter to displayAllData
+  //All data provide by perameter to displayAllDat
   displayAllData(newData);
 };
 
@@ -70,27 +70,30 @@ const displayAllData = (category) => {
 
   category.forEach((media) => {
     console.log(media);
+    // Ge total Seconds From Data
     const totalSeconds = media.others?.posted_date;
-
+    // Convert to Minitues
     const remainingMinutes = totalSeconds % 60;
     const totalMinutes = (totalSeconds - remainingMinutes) / 60;
-
+    // convert to hours
     const remainingHours = totalMinutes % 60;
     const totalHours = (totalMinutes - remainingHours) / 60;
+    // check if else and set seconds , minitues and hourse to time 
     let time;
     if (totalSeconds.length === 0) {
       time;
     } else {
       time = `${totalHours} hours ${remainingHours} miniutes ago`;
     }
+    // Set data to ui using template string
     const card = document.createElement("div");
     card.classList = "card card-bg  shadow-xl";
     card.innerHTML = `
    
    
-             <figure class="h-40 relative"><img class="w-full " src="${
-               media.thumbnail
-             }" alt="Shoes" />
+             <figure class="h-40 relative">
+             <img class="w-full " src="${media.thumbnail}" alt="Shoes" />
+
               <div class="badge ${
                 time == undefined ? "bg-transparent border-none" : "bg-black"
               }  text-white badge-ghost z-20 absolute right-10 bottom-4">${
@@ -106,13 +109,13 @@ const displayAllData = (category) => {
         </div>
         <div class="ml-4">
                  <div>
-                 <h3 class="text-lg font-semibold">${media.title}</h3>
+                 <h3 class="text-xl font-semibold">${media.title}</h3>
         <div class="flex items-center">
-            <p class="text-[gray] text-lg ">${media.authors[0].profile_name}
+            <p class="text-[white] text-lg ">${media.authors[0].profile_name}
             
             <div class="ml-3 w-6">
                 ${
-                  media.authors[0].verified 
+                  media.authors[0].verified
                     ? '<img id="verify" src="../images/verifyed-icon.png" alt="Verified" />'
                     : ""
                 }
@@ -121,7 +124,7 @@ const displayAllData = (category) => {
            
         </div>
         <div>
-            <p class="text-[gray]">${media.others.views} views</p>
+            <p class="text-[white]">${media.others.views} views</p>
         </div>
     </div>
         </div>
